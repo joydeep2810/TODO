@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { Todo, User } from "./db";
 import { UserSchema, TodoSchema, idSchema } from "./types";
 import { Schema } from "zod";
@@ -6,6 +7,7 @@ import { Schema } from "zod";
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 //For adding Todos
 app.post("/dashboard", async function (req, res) {

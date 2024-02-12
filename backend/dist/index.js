@@ -13,10 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const db_1 = require("./db");
 const types_1 = require("./types");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 app.post("/dashboard", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const schema = req.body;
@@ -47,9 +49,7 @@ app.get("/all", function (req, res) {
 app.put("/completed", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const schema = req.body;
-        console.log(schema);
         const response = types_1.idSchema.safeParse(schema);
-        console.log(response);
         if (!response.success) {
             res.json({
                 msg: "ID not found",

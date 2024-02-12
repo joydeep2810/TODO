@@ -1,4 +1,4 @@
-# TODO Manager
+# TODO APP
 
 A simple web application for managing your tasks and to-dos.
 
