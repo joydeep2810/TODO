@@ -9,7 +9,7 @@ mongoose_1.default.connect("mongodb+srv://Joydeep2810:joy209889@joydeep.adszdyo.
 const todoschema = new mongoose_1.default.Schema({
     title: { type: String },
     description: { type: String },
-    completed: { type: String },
+    completed: { type: Boolean },
 });
 const userschema = new mongoose_1.default.Schema({
     username: { type: String },

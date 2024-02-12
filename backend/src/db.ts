@@ -14,7 +14,7 @@ interface T {
 const todoschema = new mongoose.Schema<T>({
   title: { type: String },
   description: { type: String },
-  completed: { type: String },
+  completed: { type: Boolean },
 });
 
 interface U {

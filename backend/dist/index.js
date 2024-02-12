@@ -46,19 +46,17 @@ app.get("/all", function (req, res) {
 });
 app.put("/completed", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const id = req.body;
-        const response = types_1.idSchema.safeParse(id);
+        const schema = req.body;
+        console.log(schema);
+        const response = types_1.idSchema.safeParse(schema);
+        console.log(response);
         if (!response.success) {
             res.json({
                 msg: "ID not found",
             });
         }
         else {
-            yield db_1.Todo.updateOne({
-                _id: id,
-            }, {
-                completed: true,
-            });
+            yield db_1.Todo.findByIdAndUpdate({ _id: schema.id }, { completed: true }, { new: true });
             res.json({
                 msg: "Done",
             });

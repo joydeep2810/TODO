@@ -39,22 +39,19 @@ app.get("/all", async function (req, res) {
 
 //Mark as Done
 app.put("/completed", async function (req, res) {
-  const id = req.body;
+  const schema = req.body;
 
-  const response = idSchema.safeParse(id);
+  const response = idSchema.safeParse(schema);
 
   if (!response.success) {
     res.json({
       msg: "ID not found",
     });
   } else {
-    await Todo.updateOne(
-      {
-        _id: id,
-      },
-      {
-        completed: true,
-      }
+    await Todo.findByIdAndUpdate(
+      { _id: schema.id },
+      { completed: true },
+      { new: true }
     );
     res.json({
       msg: "Done",
