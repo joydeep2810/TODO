@@ -36,7 +36,7 @@ app.post("/dashboard", async function (req, res) {
 app.get("/all", async function (req, res) {
   const alltodos = await Todo.find({});
 
-  res.json({ alltodos });
+  res.json(alltodos);
 });
 
 //Mark as Done
